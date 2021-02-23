@@ -13,9 +13,6 @@ def home(request):
 def about(request):
     return render(request, 'web_app/about.html', {'title': 'About'})
 
-# testing from github
-
-
 class ProjectDetailView(DetailView):
     model = Project
     template_name = 'web_app/project_detail.html'
