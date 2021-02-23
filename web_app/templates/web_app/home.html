@@ -1,0 +1,29 @@
+{% extends "web_app/base.html" %}
+
+{% block content %}
+
+      <div class="row">
+        {% for project in projects %}
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+              <div class="card text-white bg-dark mx-auto text-center">
+                <a href="{{ project.url }}" target="_blank"><img class="card-img-top" src="{{ project.project_screenshot.url }}"alt="{{ project.project_screenshot }}"></a>
+                <div class="card-body">
+<!--                  <h2 class="card-title"><a href="{{ project.url }}" target="_blank">{{ project.title }}</a></h2>-->
+                    <p class="article-content">{{ project.description|truncatewords:20 }}</p>
+<!--                    <p class="article-content">URL: {{ project.url }}</p>-->
+                    <p class="small">Last Update: {{ project.date_posted|date:"M d, Y" }}</p>
+                    <div class="btn-group btn-group-justified">
+                        {% if project.url %}
+                            <a href="#" class="btn btn-light">Visit</a>
+                            <a href="{% url 'project-details' project.title_slug %}" class="btn btn-outline-light">Project Details</a>
+                        {% else %}
+                            <a href="{% url 'project-details' project.title_slug %}" class="btn btn-outline-light">Project Details</a>
+                        {% endif %}
+                    </div>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+
+{% endblock content %}

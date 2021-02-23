@@ -1,0 +1,72 @@
+{% extends "web_app/base.html" %}
+
+
+
+{% block content %}
+
+<!-- hero image section -->
+    <section class="detail-hero mt-4">
+
+        <div class="hero-inner">
+            <div class="row">
+                <div class="col-4 mt-4">
+                    <img class="mt-4" src="{{ object.project_logo.url }}" alt="logo">
+                </div>
+                <div class="col-8 mt-4">
+                    <h1 class="mt-4">{{ object.title }}</h1>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+<div class="container mt-4">
+  <div class="row">
+      <!-- title -->
+<!--      <h3 class="mb-6"><span class="font-weight-light">Project Name:</span> {{ object.title }}</h3>-->
+
+      <!-- table -->
+     <table class="table mb-4">
+        <tbody>
+          <tr>
+            <td>Elevator Pitch</td>
+            <td>{{ object.description }}</td>
+          </tr>
+          <tr>
+            <td>Market</td>
+            <td>{{ object.market }}</td>
+          </tr>
+          <tr>
+            <td>Requirements</td>
+            <td>
+            {% for requirement in requirements %}
+                    <li class="mb-2">{{ requirement.client_requirement }}</li>
+            {% endfor %}
+            </td>
+
+
+          </tr>
+        </tbody>
+     </table>
+
+
+      <!-- screen grab gallery -->
+
+      <h3 class="mb-3 font-weight-light">Project Screenshots:</h3>
+
+      <div class="row text-center text-lg-left">
+
+      {% for screengrab in screengrabs %}
+        <div class="col-lg-3 col-md-4 col-6">
+          <a href="#" class="d-block mb-4 h-100">
+                <img class="card-img-top border border-dark rounded" src="{{ screengrab.screen_grab.url }}" alt="alt">
+          </a>
+        </div>
+      {% endfor %}
+      </div>
+  </div>
+</div>
+
+
+{% endblock content %}
