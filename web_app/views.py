@@ -10,8 +10,8 @@ def home(request):
     return render(request, 'web_app/home2.html', context)
 
 
-def about(request):
-    return render(request, 'web_app/about.html', {'title': 'About'})
+def contact(request):
+    return render(request, 'web_app/contact.html', {'title': 'Contact'})
 
 
 class ProjectDetailView(DetailView):

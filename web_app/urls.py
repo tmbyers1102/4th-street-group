@@ -4,6 +4,6 @@ from .views import ProjectDetailView
 
 urlpatterns = [
     path('', views.home, name='web_app-home'),
-    path('about/', views.about, name='web_app-about'),
+    path('contact/', views.contact, name='web_app-contact'),
     path('<str:pk>/', ProjectDetailView.as_view(), name='project-details')
 ]
