@@ -140,13 +140,25 @@ ul {
   border-radius:rem;
 }
 .contact-image{
-  text-align: center;
+  text-align: right;
+}
+.contact-image2{
+  text-align: left;
+}
+.contact-image2 img{
+  border-radius: 100%;
+  border: 8px solid #5f788a;
+  width: 27%;
+  margin-top: -30%;
+  margin-left: 17%;
+  transform: rotate(0deg);
 }
 .contact-image img{
   border-radius: 100%;
   border: 8px solid #5f788a;
   width: 27%;
   margin-top: -15%;
+  margin-right: 17%;
   transform: rotate(0deg);
 }
 .contact-form form{
