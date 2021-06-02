@@ -1,5 +1,7 @@
 from django.db import models
+from phone_field import PhoneField
 from django.utils import timezone
+
 
 
 # This is the main model for this web app.
@@ -35,3 +37,13 @@ class Requirement(models.Model):
 
     def __str__(self):
         return self.requirement_title
+
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    phone = PhoneField(blank=True, help_text='Contact phone number')
+    company = models.CharField(max_length=100, blank=True, null=True)
+    interested_service = models.ForeignKey(Project, on_delete=models.CASCADE)
+    message = models.TextField()

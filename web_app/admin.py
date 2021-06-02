@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, Screengrab, Requirement
+from .models import Project, Screengrab, Requirement, Contact
 
 admin.site.register(Project),
 
@@ -28,3 +28,4 @@ class RequirementInfoAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Requirement, RequirementInfoAdmin)
+admin.site.register(Contact)

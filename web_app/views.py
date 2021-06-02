@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from .models import Project, Screengrab, Requirement
+from django.views import generic
+from .models import Contact, Project, Screengrab, Requirement
+from .forms import ContactModelForm
 from django.views.generic import DetailView
+from django.urls import reverse
 
 
 def home(request):
@@ -10,8 +13,8 @@ def home(request):
     return render(request, 'web_app/home2.html', context)
 
 
-def contact(request):
-    return render(request, 'web_app/contact.html', {'title': 'Contact'})
+# def contact(request):
+#     return render(request, 'web_app/contact.html', {'title': 'Contact'})
 
 
 class ProjectDetailView(DetailView):
@@ -27,6 +30,13 @@ class ProjectDetailView(DetailView):
         return context
 
 
+class ContactCreateView(generic.CreateView):
+    template_name = "web_app/contact.html"
+    model = Contact
+    form_class = ContactModelForm
 
+    def get_success_url(self):
+        print('!!VIEWS!!: contact created')
+        return reverse("web_app-home")
 
 
