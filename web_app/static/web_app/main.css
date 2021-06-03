@@ -140,16 +140,16 @@ ul {
   border-radius:rem;
 }
 .contact-image{
-  text-align: right;
+  text-align: center;
 }
 .contact-image2{
-  text-align: left;
+  text-align: center;
 }
 .contact-image2 img{
   border-radius: 100%;
   border: 8px solid #5f788a;
   width: 27%;
-  margin-top: -30%;
+  margin-top: -17%;
   margin-left: 17%;
   transform: rotate(0deg);
 }
