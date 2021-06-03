@@ -17,7 +17,7 @@ SECRET_KEY = 'tnt^+8ge_x@-oc=*rg2lkc6#bxy%vqohnvbf8-xxg30==oo0mp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fourthstreetgroup.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['fourthstreetgroup.herokuapp.com', '127.0.0.1', 'www.4thstgroup.com']
 
 
 # Application definition
