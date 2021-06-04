@@ -1,6 +1,6 @@
 from django.db import models
-from phone_field import PhoneField
 from django.utils import timezone
+from django.urls import reverse
 
 
 
@@ -49,3 +49,9 @@ class Contact(models.Model):
     company = models.CharField(max_length=100, blank=True, null=True)
     interested_service = models.ForeignKey(Project, on_delete=models.CASCADE)
     message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('web_app-home')

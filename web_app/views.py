@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import generic
 from .models import Contact, Project, Screengrab, Requirement
 from .forms import ContactModelForm
 from django.views.generic import DetailView
 from django.urls import reverse
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 def home(request):
@@ -30,13 +32,22 @@ class ProjectDetailView(DetailView):
         return context
 
 
-class ContactCreateView(generic.CreateView):
+class ContactCreateView(SuccessMessageMixin, generic.CreateView):
     template_name = "web_app/contact.html"
     model = Contact
     form_class = ContactModelForm
+    # success_url = reverse_lazy('users:login')
+    success_message = "Thanks! We will be in touch!"
 
     def get_success_url(self):
         print('!!VIEWS!!: contact created')
         return reverse("web_app-home")
+
+    # def success_message(request):
+    #     messages.success(request, f'Contact Submitted! We will be in touch!')
+    #     return reverse("web_app-home")
+
+
+
 
 

@@ -3,6 +3,19 @@
 
 
 {% block content %}
+<!-- message section -->
+{% if messages %}
+    {% for message in messages %}
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <div class="text-center alert alert-{{ message.tags }}">
+                {{ message|safe }}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
 <!-- hero image section -->
     <section class="hero mt-4">
         <div class="hero-inner">
@@ -10,6 +23,9 @@
             <h3>Powering your favorite tech services.</h3>
         </div>
     </section>
+
+
+
 
 <!-- porfolio section -->
 
