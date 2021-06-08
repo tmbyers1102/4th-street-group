@@ -3,6 +3,14 @@ from django.utils import timezone
 from django.urls import reverse
 
 
+PROGRESS_CHOICES = (
+    (0, 0),
+    (25, 25),
+    (50, 50),
+    (75, 75),
+    (100, 100),
+)
+
 
 # This is the main model for this web app.
 class Project(models.Model):
@@ -14,6 +22,9 @@ class Project(models.Model):
     project_screenshot = models.ImageField(default='default_screenshot.jpg', upload_to='project_screenshots')
     project_logo = models.ImageField(blank=True, default='default_logo.jpg', upload_to='project_logos')
     date_posted = models.DateTimeField(default=timezone.now)
+    active_project = models.BooleanField(default=False)
+    github_url = models.URLField(blank=True)
+    progress = models.IntegerField(choices=PROGRESS_CHOICES, default=0)
 
     def __str__(self):
         return self.title

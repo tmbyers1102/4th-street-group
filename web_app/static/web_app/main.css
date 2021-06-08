@@ -3,11 +3,19 @@
 body {
   background: #fafafa;
   color: #333333;
-  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
+}
+
+.block {
+  display: block;
+  width: 100%;
+}
+
+.card-p {
+  text-align: left;
 }
 
 ul {
@@ -87,6 +95,9 @@ ul {
     width: 25%;
 }
 
+
+/* DEATIL HERO */
+
 .detail-hero {
     /* Sizing */
     width: 100vw;
@@ -110,17 +121,22 @@ ul {
 
 
 .detail-hero h1 {
+    display: inline-block;
     /* Text styles */
     font-size: 2em;
     color: white;
 
     /* Margins */
+    width: 85%
     margin-top: 0;
-    margin-bottom: 0.5em;
+    margin-bottom: 0;
+    margin-left: 1em;
 }
 
 .detail-hero img {
-    width: 25%;
+  vertical-align: middle;
+  display: inline-block;
+  width: 15%;
 }
 
 
@@ -195,4 +211,220 @@ ul {
   background-color: #0062cc;
   border: none;
   cursor: pointer;
+}
+
+/* LED LIGHTS HOME PAGE */
+
+.ledcontainer {
+	background-size: cover;
+  background: rgb(226,226,226); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(226,226,226,1)), color-stop(50%,rgba(219,219,219,1)), color-stop(51%,rgba(209,209,209,1)), color-stop(100%,rgba(254,254,254,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+  padding: 20px;
+}
+
+
+#main {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  padding-bottom: 1em;
+}
+
+.led-text {
+	width: 80%;
+  text-align: left;
+  padding-left: .25em;
+}
+
+.led-box {
+  height: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.led-box p {
+  font-size: 12px;
+  text-align: center;
+  margin: 1em;
+  width: 100%;
+}
+
+.led-green {
+  margin: 0 auto;
+  width: 18px;
+  height: 18px;
+  background-color: #ABFF00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+}
+
+.led-gray {
+  margin: 0 auto;
+  width: 18px;
+  height: 18px;
+  background-color: #a7a7a7;
+  border-radius: 50%;
+  box-shadow: rgba(196, 196, 196, 0.2) 0 -1px 7px 1px, inset rgb(196, 196, 196) 0 -1px 9px, #cfcfcf 0 2px 14px;
+}
+
+/* progress bar */
+
+#myProgress {
+  border-radius: 10px;
+  width: 100%;
+  background-color: #04aa6d21;
+}
+
+#myBar25 {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 25%;
+  height: 30px;
+  background-color: #04AA6D;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  animation-name: grow25;
+  animation-duration: 4s;
+}
+
+@keyframes grow25 {
+  0%   {width: 0%;}
+  100% {width: 25%;}
+}
+
+#myBar50 {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 50%;
+  height: 30px;
+  background-color: #04AA6D;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  animation-name: grow50;
+  animation-duration: 4s;
+}
+
+@keyframes grow50 {
+  0%   {width: 0%;}
+  100% {width: 50%;}
+}
+
+#myBar75 {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 75%;
+  height: 30px;
+  background-color: #04AA6D;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  animation-name: grow75;
+  animation-duration: 4s;
+}
+
+@keyframes grow75 {
+  0%   {width: 0%;}
+  100% {width: 75%;}
+}
+
+#myBar100 {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 100%;
+  height: 30px;
+  background-color: #04AA6D;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  animation-name: grow100;
+  animation-duration: 4s;
+}
+
+@keyframes grow100 {
+  0%   {width: 0%;}
+  100% {width: 100%;}
+}
+
+/* HOME PROGRESS */
+
+#myHomeProgress {
+  width: 100%;
+  background-color: #ffffff00;
+}
+
+#myHomeBar25 {
+  width: 25%;
+  height: 20px;
+  background-color: #04AA6D;
+  text-align: center;
+  font-size: 15px;
+  line-height: 20px;
+  color: white;
+  animation-name: grow25;
+  animation-duration: 4s;
+}
+
+@keyframes grow25 {
+  0%   {width: 0%;}
+  100% {width: 25%;}
+}
+
+#myHomeBar50 {
+  width: 50%;
+  height: 20px;
+  background-color: #04AA6D;
+  text-align: center;
+  font-size: 15px;
+  line-height: 20px;
+  color: white;
+  animation-name: grow50;
+  animation-duration: 4s;
+}
+
+@keyframes grow50 {
+  0%   {width: 0%;}
+  100% {width: 50%;}
+}
+
+#myHomeBar75 {
+  width: 75%;
+  height: 20px;
+  background-color: #04AA6D;
+  text-align: center;
+  font-size: 15px;
+  line-height: 20px;
+  color: white;
+  animation-name: grow75;
+  animation-duration: 4s;
+}
+
+@keyframes grow75 {
+  0%   {width: 0%;}
+  100% {width: 75%;}
+}
+
+#myHomeBar100 {
+  width: 100%;
+  height: 20px;
+  background-color: #04AA6D;
+  text-align: center;
+  font-size: 15px;
+  line-height: 20px;
+  color: white;
+  animation-name: grow100;
+  animation-duration: 4s;
+}
+
+@keyframes grow100 {
+  0%   {width: 0%;}
+  100% {width: 100%;}
 }

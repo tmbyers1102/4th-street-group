@@ -1,7 +1,17 @@
 from django.contrib import admin
 from .models import Project, Screengrab, Requirement, Contact
 
-admin.site.register(Project),
+class ProjectInfoAdmin(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'progress'
+    )
+
+    def screengrab_info(self, obj):
+        return obj.description
+
+
+admin.site.register(Project, ProjectInfoAdmin),
 
 
 class ScreengrabInfoAdmin(admin.ModelAdmin):

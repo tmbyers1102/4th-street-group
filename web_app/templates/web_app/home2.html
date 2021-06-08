@@ -34,12 +34,38 @@
         {% for project in projects %}
             <div class="col-6 col-md-4 col-lg-3 mb-4">
               <div class="card text-white bg-dark mx-auto text-center">
+                <div id="myHomeProgress">
+                    {% if project.progress == 25 %}
+                      <div id="myHomeBar25">{{ project.progress }}%</div>
+                    {% elif project.progress == 50 %}
+                      <div id="myHomeBar50">{{ project.progress }}%</div>
+                    {% elif project.progress == 75 %}
+                      <div id="myHomeBar75">{{ project.progress }}%</div>
+                    {% elif project.progress == 100 %}
+                      <div id="myHomeBar100">{{ project.progress }}%</div>
+                    {% elif project.progress == 0 %}
+                      <div id="myHomeBar50">{{ project.progress }}%</div>
+                    {% endif %}
+                </div>
                 <a href="{% url 'project-details' project.title_slug %}" target="_blank"><img class="card-img-top" src="{{ project.project_screenshot.url }}"alt="{{ project.project_screenshot }}"></a>
                 <div class="card-body">
     <!--                  <h2 class="card-title"><a href="{{ project.url }}" target="_blank">{{ project.title }}</a></h2>-->
-                    <p class="article-content">{{ project.description|truncatewords:20 }}</p>
+                    <p class="card-p small">{{ project.description|truncatewords:20 }}</p>
     <!--                    <p class="article-content">URL: {{ project.url }}</p>-->
-                    <p class="small">Last Update: {{ project.date_posted|date:"M d, Y" }}</p>
+                    <p class="card-p small">Last Update: {{ project.date_posted|date:"M d, Y" }}</p>
+                    {% if project.active_project == True %}
+                        <div id="main">
+                            <div class="led-green"></div>
+                            <div class="led-text">Active</div>
+                        </div>
+                    {% else %}
+                        <div id="main">
+                            <div class="led-gray"></div>
+                            <div class="led-text">Inactive</div>
+                        </div>
+                    {% endif %}
+
+
                     <div class="btn-group btn-group-justified">
                         {% if project.url %}
                             <a href="#" class="btn btn-light">Visit</a>
@@ -54,6 +80,8 @@
         {% endfor %}
   </div>
 </div>
+
+
 
 {% endblock content %}
 

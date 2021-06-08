@@ -8,16 +8,8 @@
     <section class="detail-hero mt-4">
 
         <div class="hero-inner">
-            <div class="row">
-                <div class="col-4 mt-4">
-                    <img class="mt-4" src="{{ object.project_logo.url }}" alt="logo">
-                </div>
-                <div class="col-8 mt-4">
-                    <h1 class="mt-4">{{ object.title }}</h1>
-                </div>
-            </div>
-
-
+                    <img class="detal-hero-img" src="{{ object.project_logo.url }}" alt="logo">
+                    <h1 class="detail-hero-text">{{ object.title }}</h1>
         </div>
     </section>
 
@@ -26,7 +18,22 @@
       <!-- title -->
 <!--      <h3 class="mb-6"><span class="font-weight-light">Project Name:</span> {{ object.title }}</h3>-->
 
-      <!-- table -->
+    <!-- Progress Bar -->
+    <div id="myProgress" class="mb-3">
+        {% if object.progress == 25 %}
+          <div id="myBar25">Project Progress: {{ object.progress }}%</div>
+        {% elif object.progress == 50 %}
+          <div id="myBar50">Project Progress: {{ object.progress }}%</div>
+        {% elif object.progress == 75 %}
+          <div id="myBar75">Project Progress: {{ object.progress }}%</div>
+        {% elif object.progress == 100 %}
+          <div id="myBar100">Project Progress: {{ object.progress }}%</div>
+        {% elif object.progress == 0 %}
+          <div id="myBar50">Project Progress: {{ object.progress }}%</div>
+        {% endif %}
+    </div>
+
+    <!-- table -->
      <table class="table mb-4">
         <tbody>
           <tr>
