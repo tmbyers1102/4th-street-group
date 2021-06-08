@@ -1,5 +1,7 @@
 {% extends "web_app/base.html" %}
 
+{% load static %}
+
 
 
 {% block content %}
@@ -8,7 +10,7 @@
     <section class="detail-hero mt-4">
 
         <div class="hero-inner">
-                    <img class="detal-hero-img" src="{{ object.project_logo.url }}" alt="logo">
+                    <img class="detail-hero-img" src="{{ object.project_logo.url }}" alt="logo">
                     <h1 class="detail-hero-text">{{ object.title }}</h1>
         </div>
     </section>
@@ -29,7 +31,7 @@
         {% elif object.progress == 100 %}
           <div id="myBar100">Project Progress: {{ object.progress }}%</div>
         {% elif object.progress == 0 %}
-          <div id="myBar50">Project Progress: {{ object.progress }}%</div>
+          <div id="myBar00">Progress: {{ object.progress }}%</div>
         {% endif %}
     </div>
 
@@ -40,40 +42,49 @@
             <td>Elevator Pitch</td>
             <td>{{ object.description }}</td>
           </tr>
-          <tr>
-            <td>Market</td>
-            <td>{{ object.market }}</td>
-          </tr>
-          <tr>
-            <td>Requirements</td>
-            <td>
-            {% for requirement in requirements %}
-                    <li class="mb-2">{{ requirement.client_requirement }}</li>
-            {% endfor %}
-            </td>
-
-
-          </tr>
+          {% if object.market %}
+            <tr>
+              <td>Market</td>
+              <td>{{ object.market }}</td>
+            </tr>
+          {% endif %}
         </tbody>
-     </table>
+      </table>
+  </div>
+</div>
+
+
+  {% if object.github_url %}
+    <div class="container">
+        <div class="row">
+            <a href="{{ object.github_url }}"
+            target="_blank"><img class="mb-3"
+            style="width:55%;"
+            src="{% static 'web_app/github_button.png' %}"
+            alt="github_url"></a></td>
+        </div>
+      </div>
+  {% endif %}
+
 
 
       <!-- screen grab gallery -->
+      <div class="container">
 
-      <h3 class="mb-3 font-weight-light">Project Screenshots:</h3>
+        <h3 class="mb-3 font-weight-light">Project Screenshots:</h3>
 
-      <div class="row text-center text-lg-left">
+        <div class="row text-center text-lg-left">
 
-      {% for screengrab in screengrabs %}
-        <div class="col-lg-3 col-md-4 col-6">
-          <a href="#" class="d-block mb-4 h-100">
-                <img class="card-img-top border border-dark rounded" src="{{ screengrab.screen_grab.url }}" alt="alt">
-          </a>
+        {% for screengrab in screengrabs %}
+          <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                  <img class="card-img-top border border-dark rounded" src="{{ screengrab.screen_grab.url }}" alt="alt">
+            </a>
+          </div>
+        {% endfor %}
         </div>
-      {% endfor %}
       </div>
-  </div>
-</div>
+
 
 
 {% endblock content %}

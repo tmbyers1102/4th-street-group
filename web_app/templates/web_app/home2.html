@@ -44,10 +44,18 @@
                     {% elif project.progress == 100 %}
                       <div id="myHomeBar100">{{ project.progress }}%</div>
                     {% elif project.progress == 0 %}
-                      <div id="myHomeBar50">{{ project.progress }}%</div>
+                      <div id="myHomeBar00">{{ project.progress }}%</div>
                     {% endif %}
                 </div>
-                <a href="{% url 'project-details' project.title_slug %}" target="_blank"><img class="card-img-top" src="{{ project.project_screenshot.url }}"alt="{{ project.project_screenshot }}"></a>
+                <div class="card-img-container">
+                    <a href="{% url 'project-details' project.title_slug %}" target="_blank"><img class="card-img-top" style="width:100%;" src="{{ project.project_screenshot.url }}" alt="{{ project.project_screenshot }}"></a>
+                    {% if project.card_logo %}
+                    <a href="{% url 'project-details' project.title_slug %}" target="_blank"><img class="centered" style="width:35%;" src="{{ project.card_logo.url }}" alt="{{ project.project_screenshot }}"></a>
+                    {% else %}
+                        <div class="centered">{{ project.title }}</div>
+                    {% endif %}
+                    
+                </div>
                 <div class="card-body">
     <!--                  <h2 class="card-title"><a href="{{ project.url }}" target="_blank">{{ project.title }}</a></h2>-->
                     <p class="card-p small">{{ project.description|truncatewords:20 }}</p>
@@ -84,6 +92,3 @@
 
 
 {% endblock content %}
-
-
-<!--<img class="hero-image" src="{% static 'web_app/default_screenshot.jpg' %}" alt="">-->

@@ -354,6 +354,25 @@ ul {
   100% {width: 100%;}
 }
 
+#myBar00 {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 11%;
+  height: 30px;
+  background-color: #04AA6D;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  animation-name: grow00;
+  animation-duration: 4s;
+}
+
+@keyframes grow00 {
+  0%   {width: 0%;}
+  50%  {width: 50%;}
+  100% {width: 15%;}
+}
+
 /* HOME PROGRESS */
 
 #myHomeProgress {
@@ -427,4 +446,38 @@ ul {
 @keyframes grow100 {
   0%   {width: 0%;}
   100% {width: 100%;}
+}
+
+#myHomeBar00 {
+  width: 11%;
+  height: 20px;
+  background-color: #04AA6D;
+  text-align: center;
+  font-size: 15px;
+  line-height: 20px;
+  color: white;
+  animation-name: grow00;
+  animation-duration: 4s;
+}
+
+@keyframes grow00 {
+  0%   {width: 0%;}
+  50%  {width: 50%;}
+  100% {width: 11%;}
+}
+
+
+/* home card text in center of thumbnail */
+.card-img-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 85%;
 }

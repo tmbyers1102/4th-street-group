@@ -17,7 +17,7 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     title_slug = models.SlugField(blank=True, primary_key=True)
     description = models.TextField()
-    market = models.TextField()
+    market = models.TextField(blank=True, null=True, )
     url = models.URLField(blank=True)
     project_screenshot = models.ImageField(default='default_screenshot.jpg', upload_to='project_screenshots')
     project_logo = models.ImageField(blank=True, default='default_logo.jpg', upload_to='project_logos')
@@ -25,6 +25,7 @@ class Project(models.Model):
     active_project = models.BooleanField(default=False)
     github_url = models.URLField(blank=True)
     progress = models.IntegerField(choices=PROGRESS_CHOICES, default=0)
+    card_logo = models.ImageField(blank=True, null=True, upload_to='card_logos')
 
     def __str__(self):
         return self.title
