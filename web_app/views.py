@@ -21,6 +21,7 @@ def project_detail(request, pk):
     context = {
         'project': Project.objects.get(pk=pk),
         'project_logs': Log.objects.filter(project=project_name).order_by('-date_published'),
+        'project_screengrabs': Screengrab.objects.filter(assigned_project=project_name),
     }
     return render(request, 'web_app/project_detail2.html', context)
 
