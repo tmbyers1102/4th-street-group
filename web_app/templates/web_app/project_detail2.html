@@ -1,0 +1,174 @@
+{% extends "web_app/base.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<!-- hero image section -->
+    <section class="detail-hero mt-4">
+
+        <div class="hero-inner">
+                    <img class="detail-hero-img" src="{{ project.project_logo.url }}" alt="logo">
+                    <h1 class="detail-hero-text">{{ project.title }}</h1>
+        </div>
+    </section>
+
+<div class="container mt-4">
+  <div class="row">
+
+
+    <!-- Progress Bar -->
+    <div id="myProgress" class="mb-3">
+        {% if project.progress == 25 %}
+          <div id="myBar25">Project Progress: {{ project.progress }}%</div>
+        {% elif project.progress == 50 %}
+          <div id="myBar50">Project Progress: {{ project.progress }}%</div>
+        {% elif project.progress == 75 %}
+          <div id="myBar75">Project Progress: {{ project.progress }}%</div>
+        {% elif project.progress == 100 %}
+          <div id="myBar100">Project Progress: {{ project.progress }}%</div>
+        {% elif project.progress == 0 %}
+          <div id="myBar00">Progress: {{ project.progress }}%</div>
+        {% endif %}
+    </div>
+
+
+<!-- tabs -->
+    <div class="container">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#home">Details</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu1">Screenshots</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu2">Updates</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#other">Links</a>
+        </li>
+        </ul>
+    
+        <!-- Tab panes -->
+        <div class="tab-content">
+        <div id="home" class="container tab-pane active"><br>
+            <table class="table mb-4">
+                <tbody>
+                  <tr>
+                    <td>Elevator Pitch</td>
+                    <td>{{ project.description }}</td>
+                  </tr>
+                  {% if project.market %}
+                    <tr>
+                      <td>Market</td>
+                      <td>{{ project.market }}</td>
+                    </tr>
+                  {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div id="menu1" class="container tab-pane fade"><br>
+            <h3>Project Screenshots</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="other" class="container tab-pane fade"><br>
+            <h4>Take a deeper dive into this project:</h4>
+            {% if project.github_url %}
+                <div class="container mt-3">
+                    <div class="row">
+                        <a href="{{ project.github_url }}"
+                        target="_blank"><img class="mb-3"
+                        style="width:55%;"
+                        src="{% static 'web_app/github_button.png' %}"
+                        alt="github_url"></a></td>
+                    </div>
+                </div>
+            {% endif %}
+            {% if project.url %}
+                <div class="container">
+                    <div class="row">
+                        <a href="{{ project.url }}"
+                        target="_blank"><img class="mb-3"
+                        style="width:55%;"
+                        src="{% static 'web_app/visit_webapp_button.png' %}"
+                        alt="url"></a></td>
+                    </div>
+                </div>
+            {% endif %}
+
+
+            {% if not project.github_url %}
+            <div class="container">
+                <div class="content-section">
+                    <small class="text-danger">Sorry, there is no GitHub Repo available for this project</small>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div id="menu2" class="container tab-pane fade"><br>
+                <div class="row">
+                  {% for log in project_logs %}
+                    <div class="col-md-12">
+                        <div class="media g-mb-30 media-comment">
+                            <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="{% static 'web_app/street_sign_logo_green_circ.png' %}" alt="4th street group logo">
+                            <div class="media-log-body u-shadow-v18 g-bg-secondary g-pa-30">
+                              <div class="g-mb-15">
+                                <h5 class="h5 g-color-gray-dark-v1 mb-0 text-primary">{{ log.title }}</h5>
+                                <span class="g-color-gray-dark-v4 g-font-size-12">date {{ log.date_published }}</span>
+                              </div>
+                              <p>description {{ log.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<!-- table -->
+    <!-- <table class="table mb-4">
+        <tbody>
+          <tr>
+            <td>Elevator Pitch</td>
+            <td>{{ project.description }}</td>
+          </tr>
+          {% if project.market %}
+            <tr>
+              <td>Market</td>
+              <td>{{ project.market }}</td>
+            </tr>
+          {% endif %}
+        </tbody>
+    </table> -->
+
+
+
+
+<!-- screen grab gallery -->
+      <div class="container">
+
+        <div class="row text-center text-lg-left">
+
+        {% for screengrab in screengrabs %}
+          <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                  <img class="card-img-top border border-dark rounded" src="{{ screengrab.screen_grab.url }}" alt="alt">
+            </a>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+
+<!-- Project Update Logs -->
+
+
+
+{% endblock content %}

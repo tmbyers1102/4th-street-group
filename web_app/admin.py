@@ -1,5 +1,17 @@
 from django.contrib import admin
-from .models import Project, Screengrab, Requirement, Contact
+from .models import Project, Screengrab, Requirement, Contact, Log
+
+class LogInfoAdmin(admin.ModelAdmin):
+    list_display = (
+        'project',
+        'title'
+    )
+
+    def log_info(self, obj):
+        return obj.description
+
+
+admin.site.register(Log, LogInfoAdmin),
 
 class ProjectInfoAdmin(admin.ModelAdmin):
     list_display = (

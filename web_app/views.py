@@ -1,6 +1,6 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views import generic
-from .models import Contact, Project, Screengrab, Requirement
+from .models import Contact, Project, Screengrab, Requirement, Log
 from .forms import ContactModelForm
 from django.views.generic import DetailView
 from django.urls import reverse
@@ -15,21 +15,29 @@ def home(request):
     return render(request, 'web_app/home2.html', context)
 
 
-# def contact(request):
-#     return render(request, 'web_app/contact.html', {'title': 'Contact'})
+def project_detail(request, pk):
+    project_name = Project.objects.get(pk=pk)
+
+    context = {
+        'project': Project.objects.get(pk=pk),
+        'project_logs': Log.objects.filter(project=project_name).order_by('-date_published'),
+    }
+    return render(request, 'web_app/project_detail2.html', context)
 
 
-class ProjectDetailView(DetailView):
-    model = Project
-    template_name = 'web_app/project_detail.html'
+# class ProjectDetailView(DetailView):
+#     model = Project
+#     template_name = 'web_app/project_detail.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['projects'] = Project.objects.all()
-        context['screengrabs'] = Screengrab.objects.all()
-        # In order to get just this project's requirements, we need to filter to just this project
-        context['requirements'] = Requirement.objects.filter(assigned_project=str(Project.title))
-        return context
+#     def get_context_data(self, **kwargs):
+#         # project_name = get_object_or_404(Project, title=self.kwargs.get('title'))
+#         context = super().get_context_data(**kwargs)
+#         context['projects'] = Project.objects.all()
+#         context['screengrabs'] = Screengrab.objects.all()
+#         # context['logs'] = Log.objects.filter(project=project_name).order_by('description')
+#         # In order to get just this project's requirements, we need to filter to just this project
+#         context['requirements'] = Requirement.objects.filter(assigned_project=str(Project.title))
+#         return context
 
 
 class ContactCreateView(SuccessMessageMixin, generic.CreateView):

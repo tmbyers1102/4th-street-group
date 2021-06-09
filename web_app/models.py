@@ -67,3 +67,13 @@ class Contact(models.Model):
 
     def get_absolute_url(self):
         return reverse('web_app-home')
+
+
+class Log(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    title = models.CharField(max_length=250)
+    description = models.TextField()
+    date_published = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return '%s - %s' % (self.project, self.title)
