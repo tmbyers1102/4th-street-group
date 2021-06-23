@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, Screengrab, Requirement, Contact, Log
+from .models import Project, Requirement, Screengrab, Contact, Log, Tech
 
 class LogInfoAdmin(admin.ModelAdmin):
     list_display = (
@@ -39,15 +39,6 @@ class ScreengrabInfoAdmin(admin.ModelAdmin):
 admin.site.register(Screengrab, ScreengrabInfoAdmin)
 
 
-class RequirementInfoAdmin(admin.ModelAdmin):
-    list_display = (
-        'requirement_title',
-        'assigned_project'
-    )
-
-    def requirement_info(self, obj):
-        return obj.description
-
-
-admin.site.register(Requirement, RequirementInfoAdmin)
 admin.site.register(Contact)
+admin.site.register(Tech)
+admin.site.register(Requirement)

@@ -68,6 +68,26 @@
                       <td>{{ project.market }}</td>
                     </tr>
                   {% endif %}
+                  {% if project.requirements %}
+                    <tr>
+                      <td>Requirements</td>
+                      <td>
+                          {% for req in project.requirements.all %}
+                                <row id="myReqPill"><span>{{ req.requirement_title }}</span></row>
+                          {% endfor %}
+                      </td>
+                    </tr>
+                  {% endif %}
+                  {% if project.tech_used %}
+                    <tr>
+                      <td>Tech</td>
+                      <td>
+                          {% for tech in project.tech_used.all %}
+                                <row id="myTechPill"><span>{{ tech.tech_title }}</span></row>
+                          {% endfor %}
+                      </td>
+                    </tr>
+                  {% endif %}
                 </tbody>
             </table>
         </div>
@@ -77,6 +97,20 @@
                   <div class="content-section">
                       <small class="text-danger">Sorry, there are no <b>Screenshots</b> for this project...yet!</small>
                   </div>
+              </div>
+            {% endif %}
+            {% if project_screengrabs %}
+              <div class="container">
+                {% for screengrab in project_screengrabs %}
+                  <div class="card-img-container">
+                    <img
+                      class="card-img-top mb-3"
+                      style="width:65%; box-shadow: rgba(196, 196, 196, 0.2) 0 -1px 7px 1px, inset rgb(196, 196, 196) 0 -1px 9px, #cfcfcf 0 2px 14px;"
+                      src="{{ screengrab.screen_grab.url }}"
+                      alt="test"
+                    >
+                  </div>
+                {% endfor %}
               </div>
             {% endif %}
         </div>

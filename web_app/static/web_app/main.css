@@ -274,6 +274,27 @@ ul {
   box-shadow: rgba(196, 196, 196, 0.2) 0 -1px 7px 1px, inset rgb(196, 196, 196) 0 -1px 9px, #cfcfcf 0 2px 14px;
 }
 
+/* req pills */
+#myReqPill {
+  border-radius: 10px;
+  width:fit-content;
+  background-color: #009297;
+  text-align: center;
+  padding: 10px;
+  color: white;
+}
+
+
+/* tech pills */
+#myTechPill {
+  border-radius: 10px;
+  width:fit-content;
+  background-color: #892fff;
+  text-align: center;
+  padding: 10px;
+  color: white;
+}
+
 /* progress bar */
 
 #myProgress {
