@@ -48,11 +48,12 @@
                     {% endif %}
                 </div>
                 <div class="card-img-container">
-                    <a href="{% url 'project-details' project.title_slug %}" target="_blank"><img class="card-img-top" style="width:100%;" src="{{ project.project_screenshot.url }}" alt="{{ project.project_screenshot }}"></a>
+                    <a href="{% url 'project-details' project.title_slug %}"><img class="card-img-top" style="width:100%;" src="{{ project.project_screenshot.url }}" alt="{{ project.project_screenshot }}"></a>
                     {% if project.card_logo %}
-                    <a href="{% url 'project-details' project.title_slug %}" target="_blank"><img class="centered" style="width:35%;" src="{{ project.card_logo.url }}" alt="{{ project.project_screenshot }}"></a>
+                    <a href="{% url 'project-details' project.title_slug %}"><img class="centered" style="width:35%;" src="{{ project.card_logo.url }}" alt="{{ project.project_screenshot }}"></a>
                     {% else %}
-                        <div class="centered">{{ project.title }}</div>
+                    <a href="{% url 'project-details' project.title_slug %}"><div class="centered" style="color:white;">{{ project.title }}</div></a>
+                        
                     {% endif %}
                     
                 </div>
@@ -72,6 +73,17 @@
                             <div class="led-text">Inactive</div>
                         </div>
                     {% endif %}
+
+                    <!-- tech pills section -->
+                    <div>                        
+                        <div class="mb-3 card-p">
+                            {% for pill in project.tech_used.all %}
+                                <span id="myHomeTechPill">{{ pill.tech_title }}</span>
+                            {% endfor %}
+                        </div>
+                            
+                        
+                    </div>
 
 
                     <div class="btn-group btn-group-justified">
