@@ -10,7 +10,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 def home(request):
     context = {
-        'projects': Project.objects.all().order_by('-date_posted'),
+        'projects': Project.objects.all().order_by('project_rank'),
     }
     return render(request, 'web_app/home2.html', context)
 

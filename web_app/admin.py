@@ -6,6 +6,7 @@ class LogInfoAdmin(admin.ModelAdmin):
         'project',
         'title'
     )
+    search_fields = ['project__title']
 
     def log_info(self, obj):
         return obj.description
@@ -16,7 +17,8 @@ admin.site.register(Log, LogInfoAdmin),
 class ProjectInfoAdmin(admin.ModelAdmin):
     list_display = (
         'title',
-        'progress'
+        'progress',
+        'project_rank'
     )
 
     def screengrab_info(self, obj):

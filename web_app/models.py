@@ -71,6 +71,7 @@ class Project(models.Model):
     card_logo = models.ImageField(blank=True, null=True, upload_to='card_logos')
     requirements = models.ManyToManyField(Requirement, blank=True)
     tech_used = models.ManyToManyField(Tech, blank=True)
+    project_rank = models.PositiveSmallIntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.title
